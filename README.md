@@ -27,9 +27,58 @@ To implement HASH ALGORITHM
 
 
 ## Program:
+## Developed By :VASANTHAN.N
+## Register Number : 212224240180
+
+```
+
+#include <stdio.h>
+#include <string.h>
+
+void computeSimpleHash(const char *message, unsigned char *hash) {
+    unsigned char temp = 0;
+
+    for (int i = 0; message[i] != '\0'; i++) {
+        temp = temp ^ message[i]; 
+        temp += message[i];      
+    }
+    
+    *hash = temp;
+}
+
+int main() {
+    char message[256];    
+    unsigned char hash;    
+    char receivedHash[3];   
+
+    printf("Enter the message: ");
+    scanf("%s", message);
+
+    computeSimpleHash(message, &hash);
+
+    printf("Computed Hash (in hex): %02x\n", hash);
+
+    printf("Enter the received hash (in hex): ");
+    scanf("%s", receivedHash);
+
+    unsigned int receivedHashValue;
+    sscanf(receivedHash, "%02x", &receivedHashValue);
+
+    if (hash == receivedHashValue) {
+        printf("Hash verification successful. Message is unchanged.\n");
+    } else {
+        printf("Hash verification failed. Message has been altered.\n");
+    }
+
+    return 0;
+}
+```
 
 
-## Output:
+## Output
+<img width="796" height="320" alt="Screenshot 2025-11-18 152255" src="https://github.com/user-attachments/assets/1508ddc0-a0f5-4723-ad15-39eb00340068" />
+
+
 
 ## Result:
-The program is executed successfully.
+Thus,The program is executed successfully.
